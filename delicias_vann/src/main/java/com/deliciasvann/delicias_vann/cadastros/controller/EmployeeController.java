@@ -1,0 +1,69 @@
+package com.deliciasvann.delicias_vann.cadastros.controller;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.deliciasvann.delicias_vann.cadastros.model.dto.EmployeeRequest;
+import com.deliciasvann.delicias_vann.cadastros.model.dto.EmployeeResponse;
+import com.deliciasvann.delicias_vann.cadastros.model.dto.UsersRequest;
+import com.deliciasvann.delicias_vann.cadastros.service.EmployeeService;
+
+@RestController
+@RequestMapping("/employee")
+public class EmployeeController { 
+    
+    @Autowired
+    private EmployeeService service;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<EmployeeResponse> get(@PathVariable UUID id) {
+        return ResponseEntity.ok(service.findById(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EmployeeResponse>> getAll() {
+        return ResponseEntity.ok(service.findAll());
+    }
+
+    @PostMapping
+    public ResponseEntity<UUID> create(@RequestBody EmployeeRequest request, @RequestBody UsersRequest userRequest) {
+        try {
+            UUID result = service.create(request, userRequest);
+            return ResponseEntity.status(HttpStatus.CREATED).body(result);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<UUID> update(@PathVariable UUID id, @RequestBody EmployeeRequest request) {
+        try {
+            UUID result = service.update(id, request);
+            return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+        try {
+            service.delete(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}
