@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alunos</title>
+    
+    <link rel="stylesheet" href="estilo.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <h4>Lista de Alunos</h4>
+    <div id="conteiner">
+        <table border="solid">
+            <thead>
+                <tr>
+                    <td>Código</td>
+                    <td>Nome</td>
+                    <td>Email</td>
+                    <td>Senha</td>
+                    <td>Data de criação</td>
+                </tr>
+            </thead>
+            <tbody id="tabelaDados">
+                <!-- AQUI VAI SER INSERIDOS OS DADOS -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function carregaDados() {
+            $.ajax({
+                type: "Get",
+                url:  'http://localhost:8080/customer' ,    //endpoint da API
+                dataType: 'json' ,
+                success: function (  data ) { 
+                        $.each(data, function (i,item ) { 
+                            var row =
+                                `<tr>
+                                    <td> ${item.id} </td>
+                                    <td> ${item.name} </td>
+                                    <td> ${item.email} </td>
+                                    <td> ${item.password} </td>
+                                    <td> ${item.createdAt} </td>
+                                </tr>
+                                `;
+                            $("#tabelaDados").append(row);
+                        });
+                    },
+             }) ;
+        }
+
+        $(document).ready(function () {  
+            carregaDados() ;
+         }); 
+
+    </script>
+
+</body>
+</html>
