@@ -1,0 +1,27 @@
+.popup {
+  position: relative;
+  width: 35%;
+  padding: 25px 12%;
+  margin: auto;
+  top: -50px;
+}
+
+.popup p {
+  font-family: QuicksandBold;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.donuts-row {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2.5% auto;
+  width: 90%;
+  filter: opacity(0.2);
+}
+
+.donuts-row span {
+  font-family: Sobear;
+  font-size: 15rem;
+}

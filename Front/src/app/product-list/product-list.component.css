@@ -1,0 +1,52 @@
+h1 {
+  font-size: 5rem;
+  text-align: center;
+  margin-top: 0;
+}
+
+.card-list {
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  width: 95%;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-infos {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 2% 5%;
+}
+
+.card-infos-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5%;
+}
+
+.card-infos-footer span {
+  font-size: 1rem;
+  font-family: Sobear;
+}
+
+.card-infos-footer button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  font-size: 2.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: 100;
+}

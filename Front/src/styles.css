@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Variables Definition */
+
+@font-face {
+  font-family: Inter;
+  src: url("/fonts/Inter.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Sobear;
+  src: url("/fonts/Sobear.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: QuicksandBold;
+  src: url("/fonts/Quicksand_Bold.otf") format("opentype");
+}
+
+:root {
+  --primary-color: #422716;
+  --banner-mask: #422716bd;
+  --action: #7684bf;
+  --white: #f2e8df;
+  --white-background: #f6ede7;
+  --front: 1;
+  --common: 0;
+  --back: -1;
+}
+
+body {
+  margin: 0;
+  background-color: var(--white-background);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Sobear;
+  font-weight: 400;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.white-text {
+  color: var(--white);
+}
+
+.primary-text {
+  color: var(--primary-color);
+}
+
+.primary-background {
+  background-color: var(--primary-color);
+}

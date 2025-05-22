@@ -1,0 +1,11 @@
+div {
+  width: 100%;
+  aspect-ratio: 1442/252;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 15%;
+}

@@ -1,0 +1,17 @@
+<div>
+  <h1 class="primary-text">{{ title }}</h1>
+  <div class="card-list">
+    @for(item of items; track item.name) {
+    <div class="product-card">
+      <img src="{{ item.imageUrl }}" alt="{{ item.name }}" />
+      <div class="card-infos primary-background white-text">
+        <h2>{{ item.name }}</h2>
+        <div class="card-infos-footer">
+          <span>{{ this.numberToCurrency(item.price) }}</span>
+          <button class="primary-text">+</button>
+        </div>
+      </div>
+    </div>
+    } @empty { }
+  </div>
+</div>
