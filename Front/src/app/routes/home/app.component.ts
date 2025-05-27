@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { BannerComponent } from './banner/banner.component';
+import { HeaderComponent } from '../../component/header/header.component';
+import { BannerComponent } from '../../component/banner/banner.component';
 import {
   ProductListComponent,
-} from './product-list/product-list.component';
-import { VSeparatorComponent } from './vseparator/vseparator.component';
-import { FooterComponent } from './footer/footer.component';
-import { Product, ProductCategory } from './model/product.model';
-import { ProductService } from './product.service';
+} from '../../component/product-list/product-list.component';
+import { VSeparatorComponent } from '../../component/vseparator/vseparator.component';
+import { FooterComponent } from '../../component/footer/footer.component';
+import { Product } from '../../model/product.model';
+import { ProductService } from '../../service/product/product.service';
 
 @Component({
   selector: 'app-root',
