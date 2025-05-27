@@ -14,11 +14,19 @@ h1 {
 .product-card {
   display: flex;
   flex-direction: column;
+  width: 15%;
+  border-radius: 20px;
+  overflow: hidden;
+  justify-content: flex-end;
+}
+
+.product-card img {
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .card-infos {
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
   padding: 2% 5%;
 }
 

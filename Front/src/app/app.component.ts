@@ -4,10 +4,11 @@ import { HeaderComponent } from './header/header.component';
 import { BannerComponent } from './banner/banner.component';
 import {
   ProductListComponent,
-  Item,
 } from './product-list/product-list.component';
 import { VSeparatorComponent } from './vseparator/vseparator.component';
 import { FooterComponent } from './footer/footer.component';
+import { Product, ProductCategory } from './model/product.model';
+import { ProductService } from './product.service';
 
 @Component({
   selector: 'app-root',
@@ -19,63 +20,22 @@ import { FooterComponent } from './footer/footer.component';
     VSeparatorComponent,
     FooterComponent,
   ],
+  providers: [],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  mostSoldItems: Product[] = [];
+
+  recommendedItems: Product[] = []
+
+  constructor(private productService: ProductService) {
+    productService.getMostSoldProducts().subscribe(items => {
+      this.mostSoldItems = items.sort((a, b) => a.stock - b.stock).slice(0, 4);
+      this.recommendedItems = items.sort((a, b) => b.stock - a.stock).slice(0, 4);
+    });
+  }
   mostSoldTitle = 'Mais Comprados';
-  mostSoldItems: Item[] = [
-    {
-      id: 1,
-      name: 'Bolo de Chocolate',
-      price: 80.0,
-      imageUrl: '/product-images/unsplash_kPxsqUGneXQ.png',
-    },
-    {
-      id: 2,
-      name: 'Bolo de Morango',
-      price: 80.0,
-      imageUrl: '/product-images/unsplash__nAVO0UGt2A.png',
-    },
-    {
-      id: 3,
-      name: 'Bolo de sorvete',
-      price: 80.0,
-      imageUrl: '/product-images/unsplash_QNyRp21hb5I.png',
-    },
-    {
-      id: 4,
-      name: 'Bolo de Amora',
-      price: 80.0,
-      imageUrl: '/product-images/unsplash__TN1m5R1pFI.png',
-    },
-  ];
 
   recommendedTitle = 'Recomendados Para Voce';
-  recommendedItems: Item[] = [
-    {
-      id: 1,
-      name: 'Bolo de Morango',
-      price: 80.0,
-      imageUrl: '/product-images/unsplash__nAVO0UGt2A.png',
-    },
-    {
-      id: 2,
-      name: 'Bolo de sorvete',
-      price: 80.0,
-      imageUrl: '/product-images/unsplash_QNyRp21hb5I.png',
-    },
-    {
-      id: 3,
-      name: 'Bolo de Amora',
-      price: 80.0,
-      imageUrl: '/product-images/unsplash__TN1m5R1pFI.png',
-    },
-    {
-      id: 4,
-      name: 'Bolo de Chocolate',
-      price: 80.0,
-      imageUrl: '/product-images/unsplash_kPxsqUGneXQ.png',
-    },
-  ];
 }

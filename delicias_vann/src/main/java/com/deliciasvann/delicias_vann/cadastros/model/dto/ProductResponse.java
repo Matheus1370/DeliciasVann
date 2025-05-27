@@ -15,10 +15,12 @@ public class ProductResponse {
     private boolean available;
     private String category;
     private Integer stock;
+    private String imageUrl;
     private CompanyResponse company;
     private LocalDateTime createdAt;
+    private Double price;
 
-    public ProductResponse(ProductEntity product){
+    public ProductResponse(ProductEntity product) {
         this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();
@@ -27,5 +29,7 @@ public class ProductResponse {
         this.stock = product.getStock();
         this.company = new CompanyResponse(product.getCompany());
         this.createdAt = product.getCreatedAt();
+        this.imageUrl = product.getImageUrl();
+        this.price = product.getPrice();
     }
 }

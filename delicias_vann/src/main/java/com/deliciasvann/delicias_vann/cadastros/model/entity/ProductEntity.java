@@ -20,7 +20,7 @@ import lombok.Data;
 @Data
 @Entity(name = "product")
 public class ProductEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -56,10 +56,13 @@ public class ProductEntity {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    public void setStock(Integer stock){
-        if (stock != null && stock>=0) {
+    @Column(name = "image_url", nullable = false)
+    private String imageUrl;
+
+    public void setStock(Integer stock) {
+        if (stock != null && stock >= 0) {
             this.stock = stock;
-            this.available = stock>0;
+            this.available = stock > 0;
         }
     }
 

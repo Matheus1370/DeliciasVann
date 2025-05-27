@@ -1,11 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Product } from '../model/product.model';
 
-export interface Item {
-  id: number;
-  imageUrl: string;
-  name: string;
-  price: number;
-}
 
 @Component({
   selector: 'app-product-list',
@@ -16,7 +11,7 @@ export interface Item {
 })
 export class ProductListComponent {
   @Input() title: string = '';
-  @Input() items: Item[] = [];
+  @Input() items: Product[] = [];
 
   numberToCurrency(value: number): string {
     return new Intl.NumberFormat('pt-BR', {
