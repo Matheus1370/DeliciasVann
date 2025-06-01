@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../model/product.model';
+import { LocalStorageDataSource } from '../../data/local-storage.datasource';
+import { ProductService } from '../product/product.service';
 
 interface CartItem {
   product: Product;
@@ -12,7 +14,22 @@ interface CartItem {
 export class CartService {
   private items: CartItem[] = [];
 
-  constructor() {}
+  constructor(private productService: ProductService) {
+    const storedItems = LocalStorageDataSource.getCartItems();
+
+    for (const item of storedItems) {
+      this.productService.getProductById(item.id).subscribe({
+        next: (product) => {
+          if (product) {
+            this.items.push({ product, amount: item.amount });
+          }
+        },
+        error: (err) => {
+          console.error('Error fetching product:', err);
+        },
+      });
+    }
+  }
 
   addToCart(product: Product) {
     const existingItem = this.items.find(
@@ -23,6 +40,12 @@ export class CartService {
     } else {
       this.items.push({ product, amount: 1 });
     }
+    LocalStorageDataSource.updateCartItems(
+      this.items.map((item) => ({
+        id: item.product.id,
+        amount: item.amount,
+      }))
+    );
   }
 
   removeFromCart(product: Product) {
@@ -32,6 +55,12 @@ export class CartService {
     if (index !== -1) {
       this.items.splice(index, 1);
     }
+    LocalStorageDataSource.updateCartItems(
+      this.items.map((item) => ({
+        id: item.product.id,
+        amount: item.amount,
+      }))
+    );
   }
 
   editCartItem(product: Product, amount: number) {
@@ -45,6 +74,12 @@ export class CartService {
         existingItem.amount = amount;
       }
     }
+    LocalStorageDataSource.updateCartItems(
+      this.items.map((item) => ({
+        id: item.product.id,
+        amount: item.amount,
+      }))
+    );
   }
 
   getAmountInCart(product: Product): number {
