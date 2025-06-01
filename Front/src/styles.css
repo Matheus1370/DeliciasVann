@@ -23,6 +23,7 @@
   --action: #7684bf;
   --white: #f2e8df;
   --white-background: #f6ede7;
+  --grey: #c9c9c9;
   --front: 1;
   --common: 0;
   --back: -1;
@@ -56,4 +57,8 @@ h4 {
 
 .primary-background {
   background-color: var(--primary-color);
+}
+
+.grey-background {
+  background-color: var(--grey);
 }

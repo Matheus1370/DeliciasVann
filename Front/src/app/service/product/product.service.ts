@@ -3,15 +3,14 @@ import { Injectable } from '@angular/core';
 import { Product } from '../../model/product.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
   private baseUrl = 'http://localhost:8080';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getMostSoldProducts() {
+  getAllProducts() {
     return this.http.get<Product[]>(this.baseUrl + '/product');
   }
 }

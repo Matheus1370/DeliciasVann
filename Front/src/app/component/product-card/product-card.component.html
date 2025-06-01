@@ -1,0 +1,17 @@
+<div class="product-card">
+  <img src="{{ item.imageUrl }}" alt="{{ item.name }}" />
+  <div class="card-infos primary-background white-text">
+    <h2>{{ item.name }}</h2>
+    <div class="card-infos-footer">
+      <span>{{ this.currencyUtils.numberToCurrency(item.price) }}</span>
+      @if (this.getAmountInCart() === 0) {
+      <button class="primary-text" (click)="this.addToCart()">+</button>
+      }@else{
+      <app-stepper
+        [amount]="this.getAmountInCart()"
+        [onChange]="this.editCartItem"
+      />
+      }
+    </div>
+  </div>
+</div>

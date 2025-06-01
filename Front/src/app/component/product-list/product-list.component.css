@@ -1,7 +1,16 @@
 h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   text-align: center;
   margin-top: 0;
+}
+
+.card-list-complete {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  row-gap: 25px;
+  grid-template-rows: auto;
+  width: 95%;
+  margin: auto;
 }
 
 .card-list {
@@ -11,50 +20,19 @@ h1 {
   width: 95%;
 }
 
-.product-card {
+app-product-card {
   display: flex;
   flex-direction: column;
-  width: 15%;
   border-radius: 20px;
   overflow: hidden;
   justify-content: flex-end;
 }
 
-.product-card img {
-  width: 100%;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+.card-list-complete > app-product-card {
+  width: 60%;
+  margin: 0 auto;
 }
 
-.card-infos {
-  padding: 2% 5%;
-}
-
-.card-infos-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 5%;
-}
-
-.card-infos-footer span {
-  font-size: 1rem;
-  font-family: Sobear;
-}
-
-.card-infos-footer button {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: none;
-  font-size: 2.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 0;
-}
-
-h2 {
-  font-size: 1rem;
-  font-weight: 100;
+.card-list > app-product-card {
+  width: 15%;
 }

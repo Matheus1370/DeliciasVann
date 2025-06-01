@@ -12,7 +12,11 @@
       >
         {{ title }}
       </h1>
-      <button class="btn" [style.display]="buttonDisplay">
+      <button
+        class="btn"
+        (click)="this.onButtonClick()"
+        [style.display]="buttonDisplay"
+      >
         {{ buttonText }}
       </button>
     </div>

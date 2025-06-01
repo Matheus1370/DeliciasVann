@@ -3,8 +3,16 @@ export enum ProductCategory {
   PASTRY = 'pastry',
   BREAD = 'bread',
   DRINK = 'drink',
-  OTHER = 'other'
+  OTHER = 'other',
 }
+
+export const categoryTitleMapper = {
+  [ProductCategory.CAKE]: 'Bolos',
+  [ProductCategory.PASTRY]: 'Doces',
+  [ProductCategory.BREAD]: 'Pães',
+  [ProductCategory.DRINK]: 'Bebidas',
+  [ProductCategory.OTHER]: 'Outros',
+};
 
 export interface Product {
   id: string;
@@ -14,5 +22,4 @@ export interface Product {
   description: string;
   category: ProductCategory;
   stock: number;
-
 }
