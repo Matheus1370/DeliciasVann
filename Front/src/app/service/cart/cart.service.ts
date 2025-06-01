@@ -3,7 +3,7 @@ import { Product } from '../../model/product.model';
 import { LocalStorageDataSource } from '../../data/local-storage.datasource';
 import { ProductService } from '../product/product.service';
 
-interface CartItem {
+export interface CartItem {
   product: Product;
   amount: number;
 }
