@@ -1,4 +1,4 @@
-<div class="stepper">
+<div [className]="this.stepperClass">
   <button (click)="this.decrement()" class="grey-background">-</button>
   <input
     (change)="this.onChangeAmount($event)"

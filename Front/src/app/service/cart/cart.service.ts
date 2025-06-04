@@ -14,6 +14,16 @@ export interface CartItem {
 export class CartService {
   private items: CartItem[] = [];
 
+  private _isCartModalOpen = false;
+
+  get isCartModalOpen(): boolean {
+    return this._isCartModalOpen;
+  }
+
+  set isCartModalOpen(value: boolean) {
+    this._isCartModalOpen = value;
+  }
+
   constructor(private productService: ProductService) {
     const storedItems = LocalStorageDataSource.getCartItems();
 
@@ -102,5 +112,10 @@ export class CartService {
       (total, item) => total + item.product.price * item.amount,
       0
     );
+  }
+
+  checkout(): void {
+    alert('Pedido feito com sucesso!');
+    this.clearCart();
   }
 }

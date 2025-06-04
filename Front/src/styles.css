@@ -13,6 +13,11 @@
 }
 
 @font-face {
+  font-family: Quicksand;
+  src: url("/fonts/Quicksand.otf") format("opentype");
+}
+
+@font-face {
   font-family: QuicksandBold;
   src: url("/fonts/Quicksand_Bold.otf") format("opentype");
 }
@@ -24,6 +29,7 @@
   --white: #f2e8df;
   --white-background: #f6ede7;
   --grey: #c9c9c9;
+  --black: #5f5d5b;
   --front: 1;
   --common: 0;
   --back: -1;
@@ -61,4 +67,8 @@ h4 {
 
 .grey-background {
   background-color: var(--grey);
+}
+
+.white-background {
+  background-color: var(--white-background);
 }

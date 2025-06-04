@@ -10,18 +10,24 @@ export class LocalStorageDataSource {
         `${this.CART_ITEM_KEY_PREFIX}${item.id}${this.CART_ITEM_AMOUNT_KEY_SUFFIX}`
       ] = item.amount;
     });
-    localStorage.setItem(this.CART_KEY, JSON.stringify(cartItems));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(this.CART_KEY, JSON.stringify(cartItems));
+    }
   }
 
   static getCartItems(): { id: string; amount: number }[] {
-    const cartItems: { [key: string]: number } = JSON.parse(
-      localStorage.getItem(this.CART_KEY) || '{}'
-    );
-    return Object.entries(cartItems).map(([key, amount]) => {
-      const id = key
-        .replace(this.CART_ITEM_KEY_PREFIX, '')
-        .replace(this.CART_ITEM_AMOUNT_KEY_SUFFIX, '');
-      return { id, amount };
-    });
+    if (typeof window !== 'undefined') {
+      const cartItems: { [key: string]: number } = JSON.parse(
+        localStorage.getItem(this.CART_KEY) || '{}'
+      );
+      return Object.entries(cartItems).map(([key, amount]) => {
+        const id = key
+          .replace(this.CART_ITEM_KEY_PREFIX, '')
+          .replace(this.CART_ITEM_AMOUNT_KEY_SUFFIX, '');
+        return { id, amount };
+      });
+    } else {
+      return [];
+    }
   }
 }

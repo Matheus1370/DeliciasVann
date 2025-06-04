@@ -7,7 +7,8 @@
 }
 
 .popup p {
-  font-family: QuicksandBold;
+  font-family: Quicksand;
+  font-weight: 700;
   font-size: 1.25rem;
   text-align: center;
 }

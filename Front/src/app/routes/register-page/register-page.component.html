@@ -1,0 +1,61 @@
+<div class="regsiter-page">
+  <a href="" class="back-link">
+    <img src="/assets/ic-arrow.svg" />
+    <span>Voltar</span>
+  </a>
+  <div>
+    <img src="/assets/img-logo.svg" />
+  </div>
+  <div class="regsiter-container">
+    <h1 class="regsiter-title white-text">CADASTRO</h1>
+    <form class="regsiter-form" (submit)="onSubmit()">
+      <div class="input-group">
+        <label class="white-text" for="email">Nome:</label>
+        <input
+          id="name"
+          type="text"
+          [(ngModel)]="userData.name"
+          name="name"
+          required
+          placeholder="Digite seu nome..."
+        />
+      </div>
+      <div class="input-group">
+        <label class="white-text" for="email">Email:</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="userData.email"
+          name="email"
+          required
+          placeholder="Digite seu email..."
+        />
+      </div>
+      <div class="input-group">
+        <label class="white-text" for="password">Senha:</label>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="userData.password"
+          name="password"
+          required
+          placeholder="Digite sua senha..."
+        />
+        <input
+          id="confirmPassword"
+          type="password"
+          [(ngModel)]="userData.confirmPassword"
+          name="confirmPassword"
+          required
+          placeholder="Repita sua senha..."
+        />
+      </div>
+      <app-vseparator [half]="true" />
+      <button type="submit" class="regsiter-button">CADASTRAR</button>
+    </form>
+  </div>
+
+  <a class="register-link white-text" href="/login">
+    <p>Já tem uma conta?</p>
+  </a>
+</div>

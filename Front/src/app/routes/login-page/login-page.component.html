@@ -1,0 +1,42 @@
+<div class="login-page">
+  <a href="" class="back-link">
+    <img src="/assets/ic-arrow.svg" />
+    <span>Voltar</span>
+  </a>
+  <div>
+    <img src="/assets/img-logo.svg" />
+  </div>
+  <div class="login-container">
+    <h1 class="login-title white-text">LOGIN</h1>
+    <form class="login-form" (submit)="onSubmit()">
+      <div class="input-group">
+        <label class="white-text" for="email">Email:</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="userData.email"
+          name="email"
+          required
+          placeholder="Digite seu email..."
+        />
+      </div>
+      <div class="input-group">
+        <label class="white-text" for="password">Senha:</label>
+        <input
+          id="password"
+          type="password"
+          [(ngModel)]="userData.password"
+          name="password"
+          required
+          placeholder="Digite sua senha..."
+        />
+      </div>
+      <app-vseparator [half]="true" />
+      <button type="submit" class="login-button">ENTRAR</button>
+    </form>
+  </div>
+
+  <a class="register-link white-text" href="/register">
+    <p>Ainda não tem uma conta?</p>
+  </a>
+</div>

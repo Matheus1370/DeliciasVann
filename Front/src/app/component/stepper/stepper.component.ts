@@ -3,13 +3,14 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-stepper',
   imports: [],
-  inputs: ['amount'],
+  inputs: ['amount', 'half', 'onChange'],
   templateUrl: './stepper.component.html',
   styleUrl: './stepper.component.css',
 })
 export class StepperComponent {
   @Input() amount!: number;
   @Input() onChange!: (amount: number) => void;
+  @Input() half: boolean = false;
 
   increment(): void {
     this.onChange(this.amount + 1);
@@ -26,7 +27,7 @@ export class StepperComponent {
     this.onChange(this.amount - 1);
   }
 
-  ngOnChanges(): void {
-    console.log(this.amount);
+  get stepperClass(): string {
+    return this.half ? 'stepper half' : 'stepper full';
   }
 }

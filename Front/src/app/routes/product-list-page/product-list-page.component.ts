@@ -10,6 +10,7 @@ import {
 } from '../../model/product.model';
 import { ProductListComponent } from '../../component/product-list/product-list.component';
 import { VSeparatorComponent } from '../../component/vseparator/vseparator.component';
+import { CartModalComponent } from '../../component/cart-modal/cart-modal.component';
 
 @Component({
   selector: 'app-product-list-page',
@@ -19,6 +20,7 @@ import { VSeparatorComponent } from '../../component/vseparator/vseparator.compo
     FooterComponent,
     ProductListComponent,
     VSeparatorComponent,
+    CartModalComponent,
   ],
 
   templateUrl: './product-list-page.component.html',

@@ -20,7 +20,6 @@ export class BannerComponent {
     this.titleDisplay = !!this.title ? 'inline' : 'none';
     this.buttonDisplay = !!this.buttonText ? 'block' : 'none';
     this.buttonLink = this.buttonLink || '#';
-    console.log(this.backgroundImageUrl);
   }
 
   onButtonClick() {

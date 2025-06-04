@@ -6,6 +6,7 @@ import { VSeparatorComponent } from '../../component/vseparator/vseparator.compo
 import { FooterComponent } from '../../component/footer/footer.component';
 import { Product } from '../../model/product.model';
 import { ProductService } from '../../service/product/product.service';
+import { CartModalComponent } from '../../component/cart-modal/cart-modal.component';
 
 @Component({
   selector: 'app-home-page',
@@ -15,6 +16,7 @@ import { ProductService } from '../../service/product/product.service';
     ProductListComponent,
     VSeparatorComponent,
     FooterComponent,
+    CartModalComponent,
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
