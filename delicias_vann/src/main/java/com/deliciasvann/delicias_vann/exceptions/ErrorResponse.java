@@ -12,4 +12,12 @@ public class ErrorResponse {
         this.details = details;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
 }
