@@ -1,0 +1,31 @@
+<div class="cart-product-card white-background">
+  <div class="product-image-wrapper">
+    <img
+      class="product-image"
+      [src]="item.product.imageUrl"
+      alt="Product Image"
+    />
+  </div>
+  <div class="product-details">
+    <h2 class="product-name">{{ item.product.name }}</h2>
+
+    <div class="product-pricing-info">
+      <span class="product-price">
+        {{ currencyUtils.numberToCurrency(item.product.price) }}
+      </span>
+      <app-stepper
+        [half]="true"
+        [amount]="item.amount"
+        [onChange]="this.editCartItem"
+      />
+    </div>
+  </div>
+  <div class="product-actions">
+    <button
+      class="remove-button"
+      (click)="this.cartService.removeFromCart(item.product)"
+    >
+      ×
+    </button>
+  </div>
+</div>

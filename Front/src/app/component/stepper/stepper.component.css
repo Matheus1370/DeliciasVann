@@ -1,0 +1,39 @@
+.stepper {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  color: black;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.stepper.full {
+  width: 100%;
+}
+
+.stepper.half {
+  width: 50%;
+}
+
+.stepper button {
+  width: 33%;
+  border: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.stepper button:hover {
+  filter: brightness(0.8);
+}
+
+.stepper input[type="number"] {
+  width: 34%;
+  border: 0;
+  text-align: center;
+}
+
+.stepper input::-webkit-outer-spin-button,
+.stepper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

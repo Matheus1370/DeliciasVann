@@ -1,0 +1,38 @@
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  margin-top: 0;
+}
+
+.card-list-complete {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  row-gap: 25px;
+  grid-template-rows: auto;
+  width: 95%;
+  margin: auto;
+}
+
+.card-list {
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  width: 95%;
+}
+
+app-product-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  justify-content: flex-end;
+}
+
+.card-list-complete > app-product-card {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.card-list > app-product-card {
+  width: 15%;
+}

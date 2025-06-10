@@ -1,0 +1,60 @@
+<div class="modal-container" [style.display]="this.getMainDivDisplay()">
+  <div class="modal-overlay" (click)="this.closeCartModal()"></div>
+  <div class="cart-modal">
+    <div class="cart-modal-header">
+      <h1 class="cart-title white-text">MINHA SACOLA</h1>
+      <button class="close-button white-text" (click)="this.closeCartModal()">
+        ×
+      </button>
+    </div>
+
+    <div class="cart-modal-content">
+      @if (this.cartItems.length > 0) {
+      <div class="cart-items">
+        @for(item of this.cartItems; track item.product.name) {
+        <app-vseparator [half]="true" />
+        <app-cart-product-card [item]="item" />
+        }
+        <app-vseparator [half]="true" />
+      </div>
+      } @else { }
+      <div class="cart-summary white-background">
+        <label class="zip-code-label"> CEP: </label>
+        <div class="zip-code-input-container">
+          <input
+            class="zip-code-input"
+            type="text"
+            placeholder="Digite seu CEP"
+          />
+          <input class="zip-code-input" value="R$10,00" type="text" disabled />
+        </div>
+
+        <app-vseparator [half]="true" />
+        <div class="price-container">
+          <span class="subtotal-price"> Subtotal: </span>
+          <span class="subtotal-price">
+            {{
+              this.currencyUtils.numberToCurrency(
+                this.cartService.getTotalPrice()
+              )
+            }}
+          </span>
+        </div>
+        <div class="price-container">
+          <span class="total-price"> Total: </span>
+          <span class="total-price">
+            {{
+              this.currencyUtils.numberToCurrency(
+                this.cartService.getTotalPrice() + 10
+              )
+            }}
+          </span>
+        </div>
+
+        <button class="checkout-button" (click)="this.cartService.checkout()">
+          Finalizar compra
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

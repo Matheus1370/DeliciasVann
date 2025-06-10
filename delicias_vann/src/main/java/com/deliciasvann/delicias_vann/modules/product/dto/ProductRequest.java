@@ -11,5 +11,7 @@ public class ProductRequest {
     private boolean available;
     private String category;
     private Integer stock;
+    private String imageUrl;
+    private Double price;
     private UUID companyId;
 }

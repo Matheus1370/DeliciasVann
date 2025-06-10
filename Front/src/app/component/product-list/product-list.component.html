@@ -1,0 +1,8 @@
+<div>
+  <h1 class="primary-text">{{ title }}</h1>
+  <div [class]="containerClass">
+    @for(item of items; track item.name) {
+    <app-product-card [item]="item" />
+    } @empty { }
+  </div>
+</div>

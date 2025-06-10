@@ -1,0 +1,40 @@
+<main class="main">
+  <app-header />
+  <app-banner
+    title="Os melhores doces voce encontra aqui!!"
+    backgroundImageUrl="assets/img-banner-1.png"
+    buttonText="< Nossos produtos >"
+    buttonLink="/products"
+    size="large"
+  />
+
+  <div class="popup primary-background">
+    <p class="white-text">
+      Há mais de 10 anos, no mercado a empresa começou em ambiente familiar como
+      forma de produção para a família e foi se expandindo.
+    </p>
+  </div>
+  <app-product-list [items]="mostSoldItems" [title]="mostSoldTitle" />
+
+  <div class="donuts-row">
+    <span><</span>
+    <img src="assets/img-donut-1.png" alt="Donuts" />
+    <img src="assets/img-donut-2.png" alt="Donuts" />
+    <img src="assets/img-donut-3.png" alt="Donuts" />
+    <img src="assets/img-donut-4.png" alt="Donuts" />
+    <span>></span>
+  </div>
+
+  <app-product-list [items]="recommendedItems" [title]="recommendedTitle" />
+
+  <app-vseparator />
+
+  <app-banner
+    title="doces de varios tipos!!"
+    backgroundImageUrl="assets/img-banner-2.jpg"
+    size="small"
+  />
+
+  <app-footer />
+  <app-cart-modal />
+</main>

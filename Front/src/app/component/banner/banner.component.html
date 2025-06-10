@@ -1,0 +1,25 @@
+<main>
+  <div
+    [style.backgroundImage]="'url(' + backgroundImageUrl + ')'"
+    [style.aspectRatio]="size === 'large' ? '3.84' : '1440/243'"
+    class="banner"
+  >
+    <div class="content">
+      <h1
+        class="white-text"
+        [style.fontSize]="!!buttonText ? '2.5rem' : '3rem'"
+        [style.display]="titleDisplay"
+      >
+        {{ title }}
+      </h1>
+      <button
+        class="btn"
+        (click)="this.onButtonClick()"
+        [style.display]="buttonDisplay"
+      >
+        {{ buttonText }}
+      </button>
+    </div>
+    <div class="mask"></div>
+  </div>
+</main>

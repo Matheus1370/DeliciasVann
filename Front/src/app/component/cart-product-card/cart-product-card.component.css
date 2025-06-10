@@ -1,0 +1,53 @@
+.cart-product-card {
+  width: 84%;
+  padding: 20px 3%;
+  border-radius: 30px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 40% 55% 5%;
+}
+
+.product-image-wrapper {
+  width: 100%;
+}
+
+.product-image {
+  width: 90%;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.product-details h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.product-pricing-info {
+  height: 30%;
+}
+
+.product-details {
+  font-family: Sobear;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.product-price {
+  font-size: 1.2rem;
+}
+
+.product-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.remove-button {
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+  margin: 0;
+  cursor: pointer;
+}

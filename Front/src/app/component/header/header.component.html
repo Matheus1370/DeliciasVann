@@ -1,0 +1,17 @@
+<main>
+  <div class="wrapper primary-background">
+    <div>
+      <img [src]="logoImgSrc" />
+    </div>
+    <div class="icons-wrapper">
+      <a href=""><span class="link white-text">Home</span></a>
+      <a href="products"><span class="link white-text">Produtos</span></a>
+      <button class="button-wrapper" (click)="this.openCartModal()">
+        <img class="link" [src]="bagIconSrc" />
+      </button>
+      <a href="login">
+        <img class="link" [src]="profileIconSrc" />
+      </a>
+    </div>
+  </div>
+</main>

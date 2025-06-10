@@ -1,0 +1,50 @@
+.banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3.84;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--banner-mask);
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner .content {
+  z-index: var(--front);
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner h1 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.banner button {
+  background-color: var(--action);
+  color: var(--white);
+  font-family: Sobear;
+  width: 45%;
+  aspect-ratio: 4;
+  font-size: 1.4rem;
+  border: 0;
+  border-radius: 15px;
+  cursor: pointer;
+}

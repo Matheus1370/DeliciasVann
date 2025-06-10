@@ -1,0 +1,21 @@
+<main>
+  <app-header />
+  <app-banner
+    title="Venha conhecer nossos produtos!!"
+    backgroundImageUrl="assets/img-banner-3.jpg"
+    size="large"
+  />
+
+  @for(item of this.keys(); track item) { @if (items[item].length>0) {
+  <app-vseparator />
+  <app-product-list
+    [title]="this.titleMapper[item]"
+    [items]="this.items[item]"
+    type="complete"
+  />
+  } }
+  <app-vseparator />
+
+  <app-footer />
+  <app-cart-modal />
+</main>
