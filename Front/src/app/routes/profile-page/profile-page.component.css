@@ -1,0 +1,150 @@
+body {
+  background-color: #f4ede9;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.perfil,
+.payment-data {
+  background-color: #4a2e1f;
+  color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 50vh;
+}
+
+.payment-data {
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+}
+
+.payment-data .enderecos,
+.payment-data .cartoes {
+  width: 50%;
+  padding: 10px;
+}
+
+.perfil-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.perfil-header img {
+  width: 50%;
+  border-radius: 50%;
+}
+
+.perfil h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: Sobear;
+}
+
+.perfil label {
+  font-family: QuicksandBold;
+}
+
+.perfil input {
+  width: 95%;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #a17963;
+  color: #fff;
+  font-family: QuicksandBold;
+}
+
+.perfil input::placeholder {
+  color: var(--white);
+}
+
+.botoes {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.editar,
+.sair {
+  background-color: #fff;
+  color: #4a2e1f;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: QuicksandBold;
+}
+
+.enderecos h2,
+.cartoes h2 {
+  text-align: center;
+  font-family: Sobear;
+}
+
+.endereco-box {
+  background-color: #a17963;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-family: Quicksand;
+}
+
+.endereco-box a {
+  color: #fff;
+  display: block;
+  text-align: center;
+  margin-top: 5px;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+p,
+span {
+  font-family: QuicksandBold;
+}
+
+.add {
+  width: 100%;
+  padding: 10px;
+  background-color: #a17963;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.cartao-box {
+  background-color: #d9d9d9;
+  color: #000;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.chip {
+  width: 40px;
+  height: 30px;
+  background-color: goldenrod;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.cartao-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 10px;
+}

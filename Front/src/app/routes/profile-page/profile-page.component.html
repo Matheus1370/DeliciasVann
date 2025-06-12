@@ -1,0 +1,72 @@
+<main>
+  <app-header />
+  <div class="container">
+    <!-- Perfil -->
+    <div class="perfil">
+      <div class="perfil-header">
+        <img src="assets/ic-profile.svg" />
+        <div>
+          <h2>
+            BEM VINDO<br />{{ this.authenticationService.userData?.name }}
+          </h2>
+        </div>
+      </div>
+      <label>Nome:</label>
+      <input
+        type="text"
+        placeholder="Nome do Usuário"
+        [(ngModel)]="newName"
+        [value]="this.authenticationService.userData?.name"
+      />
+      <label>Email:</label>
+      <input
+        type="email"
+        placeholder="Email do Usuário"
+        [(ngModel)]="newEmail"
+        [value]="this.authenticationService.userData?.email"
+      />
+      <label>Gênero:</label>
+      <input type="text" placeholder="Gênero do Usuário" />
+      <div class="botoes">
+        <button class="editar" (click)="updateProfile()">EDITAR</button>
+        <button class="sair" (click)="logout()">SAIR</button>
+      </div>
+    </div>
+
+    <div class="payment-data">
+      <!-- Endereços -->
+      <div class="enderecos">
+        <h2>ENDERECOS</h2>
+        <p>Endereco 1:</p>
+        <div class="endereco-box">
+          <p>
+            Rua: alameda das alamedas<br />
+            Bairro: Alamedeiro<br />
+            Cidade: Alameida<br />
+            CEP: 00000-000<br />
+            Telefone: (00) 00000-0000
+          </p>
+          <a href="#">Editar</a>
+        </div>
+        <button class="add">+</button>
+      </div>
+
+      <!-- Cartões -->
+      <div class="cartoes">
+        <h2>CARTOES</h2>
+        <p>Cartão 1:</p>
+        <div class="cartao-box">
+          <div class="chip"></div>
+          <p>•••• •••• •••• ••••</p>
+          <div class="cartao-info">
+            <span>Name</span>
+            <span>Validade<br />••/••</span>
+          </div>
+        </div>
+        <button class="add">+</button>
+      </div>
+    </div>
+  </div>
+
+  <app-footer />
+</main>
