@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +20,10 @@ import com.deliciasvann.delicias_vann.modules.product.dto.ProductRequest;
 import com.deliciasvann.delicias_vann.modules.product.dto.ProductResponse;
 import com.deliciasvann.delicias_vann.modules.product.service.ProductService;
 
-@CrossOrigin(origins="*")
+import jakarta.validation.Valid;
+
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/product")
 public class ProductController {
     
@@ -40,13 +41,24 @@ public class ProductController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('COMPANY', 'EMPLOYEE')")
-    public ResponseEntity<ProductResponse> create(@RequestBody ProductRequest request) {
+    public ResponseEntity<?> create(@Valid @RequestBody ProductRequest request) {
         try {
             ProductResponse result = service.create(request);
             return ResponseEntity.status(HttpStatus.CREATED).body(result);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(
+                new com.deliciasvann.delicias_vann.exceptions.ErrorResponse(
+                    "Erro ao criar produto",
+                    e.getMessage()
+                )
+            );
         } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                new com.deliciasvann.delicias_vann.exceptions.ErrorResponse(
+                    "Erro inesperado ao criar produto",
+                    e.getMessage()
+                )
+            );
         }
     }
     

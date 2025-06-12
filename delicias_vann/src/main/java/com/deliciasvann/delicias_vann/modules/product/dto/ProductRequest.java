@@ -13,5 +13,5 @@ public class ProductRequest {
     private Integer stock;
     private String imageUrl;
     private Double price;
-    private UUID companyId;
+    private UUID company;
 }

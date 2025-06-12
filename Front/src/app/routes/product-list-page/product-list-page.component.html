@@ -1,21 +1,26 @@
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
 <main>
+  
   <app-header />
   <app-banner
     title="Venha conhecer nossos produtos!!"
     backgroundImageUrl="assets/img-banner-3.jpg"
     size="large"
   />
-
+  <!-- Product lists by category -->
   @for(item of this.keys(); track item) { @if (items[item].length>0) {
   <app-vseparator />
   <app-product-list
-    [title]="this.titleMapper[item]"
     [items]="this.items[item]"
     type="complete"
   />
   } }
   <app-vseparator />
-
+  
+  <app-product-list [items]="mostSoldItems" />
+  <app-vseparator />
   <app-footer />
   <app-cart-modal />
 </main>

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,8 +47,10 @@ public class CompanyService {
         CompanyEntity entity = companyRepository
             .findById(id)
             .orElseThrow(() -> new UserNotFoundException("User not found with ID " + id.toString()));
-    
-        BeanUtils.copyProperties(request, entity);
+        // Manual field assignment
+        entity.setName(request.getName());
+        entity.setPhone(request.getPhone());
+        entity.setAddress(request.getAddress());
         return companyRepository.save(entity);
     }
     

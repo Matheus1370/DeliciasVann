@@ -35,7 +35,7 @@ public class ProductEntity {
     @Column(length = 500)
     private String description;
 
-    @Size(min = 0)
+    @Min(value = 0, message = "O preço não pode ser negativo")
     @Column(nullable = false)
     private double price;
 
@@ -58,13 +58,24 @@ public class ProductEntity {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "image_url", nullable = false)
+    @Column(name = "image_url")
     private String imageUrl;
 
     public void setStock(Integer stock) {
         if (stock != null && stock >= 0) {
             this.stock = stock;
             this.available = stock > 0;
+        } else {
+            this.stock = 0;
+            this.available = false;
+        }
+    }
+
+    public void setPrice(double price) {
+        if (price < 0) {
+            this.price = 0;
+        } else {
+            this.price = price;
         }
     }
 

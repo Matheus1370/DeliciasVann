@@ -37,17 +37,17 @@ export class ProductListPageComponent {
 
   titleMapper = categoryTitleMapper;
 
+  mostSoldItems: Product[] = [];
+  mostSoldTitle = 'Mais Vendidos';
+
   constructor(private productService: ProductService) {
-    productService.getAllProducts().subscribe((items) => {
+    this.productService.getAllProducts().subscribe((products) => {
       for (let category in ProductCategory) {
-        this.items[ProductCategory[category as keyof typeof ProductCategory]] =
-          items.filter((item) => {
-            return (
-              item.category ==
-              ProductCategory[category as keyof typeof ProductCategory]
-            );
-          });
+        const cat = ProductCategory[category as keyof typeof ProductCategory];
+        this.items[cat] = products.filter((item) => item.category === cat);
       }
+      // Example: get top 4 most sold by stock (customize as needed)
+      this.mostSoldItems = products.sort((a, b) => a.stock - b.stock).slice(0, 4);
     });
   }
 

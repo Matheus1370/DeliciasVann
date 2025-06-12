@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,7 +29,8 @@ public class CustomerService {
             throw new UserFoundException();
         }
         CustomerEntity entity = new CustomerEntity();
-        BeanUtils.copyProperties(request, entity);
+        entity.setName(request.getName());
+        entity.setEmail(request.getEmail());
         var password = passwordEncoder.encode(request.getPassword());
         entity.setPassword(password);
         return repository.save(entity).getId();
@@ -40,8 +40,10 @@ public class CustomerService {
         CustomerEntity entity = repository
             .findById(id)
             .orElseThrow(() -> new UserNotFoundException("User not found with ID " + id.toString()));
-    
-        BeanUtils.copyProperties(request, entity);
+        entity.setName(request.getName());
+        entity.setEmail(request.getEmail());
+        var password = passwordEncoder.encode(request.getPassword());
+        entity.setPassword(password);
         return repository.save(entity).getId();
     }
     
@@ -50,7 +52,10 @@ public class CustomerService {
             .findById(id)
             .orElseThrow(() -> new UserNotFoundException("User not found with ID " + id.toString()));
         CustomerResponse res = new CustomerResponse();
-        BeanUtils.copyProperties(entity, res);
+        res.setId(entity.getId());
+        res.setName(entity.getName());
+        res.setEmail(entity.getEmail());
+        res.setCreatedAt(entity.getCreatedAt());
         return res;
     }
 
@@ -59,7 +64,10 @@ public class CustomerService {
         List<CustomerResponse> responses = new ArrayList<>();
         for(CustomerEntity e: entities){
             CustomerResponse res = new CustomerResponse();
-            BeanUtils.copyProperties(e, res);
+            res.setId(e.getId());
+            res.setName(e.getName());
+            res.setEmail(e.getEmail());
+            res.setCreatedAt(e.getCreatedAt());
             responses.add(res);
         }
         return responses;

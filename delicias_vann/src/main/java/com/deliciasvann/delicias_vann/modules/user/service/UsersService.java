@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,7 +29,8 @@ public class UsersService {
                 throw new UserFoundException();
             });
         UsersEntity entity = new UsersEntity();
-        BeanUtils.copyProperties(request, entity);
+        entity.setEmail(request.getEmail());
+        entity.setRole(request.getRole());
         var password = passwordEncoder.encode(request.getPassword());
         entity.setPassword(password);
         return repository.save(entity);
@@ -38,7 +38,10 @@ public class UsersService {
     
     public UUID update(UUID id, UsersRequest request) {
         UsersEntity entity = repository.findById(id).orElseThrow();
-        BeanUtils.copyProperties(request, entity);
+        entity.setEmail(request.getEmail());
+        entity.setRole(request.getRole());
+        var password = passwordEncoder.encode(request.getPassword());
+        entity.setPassword(password);
         return repository.save(entity).getId();
     }
     

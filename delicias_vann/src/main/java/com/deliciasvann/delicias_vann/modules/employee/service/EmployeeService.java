@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,8 +65,15 @@ public class EmployeeService {
         EmployeeEntity entity = repository
             .findById(id)
             .orElseThrow(() -> new UserNotFoundException("User not found with ID " + id.toString()));
-    
-        BeanUtils.copyProperties(request, entity);
+        // Manual field assignment
+        entity.setName(request.getName());
+        entity.setAddress(request.getAddress());
+        entity.setPhone(request.getPhone());
+        // If companyId is present, update company
+        if (request.getCompanyId() != null) {
+            // You may want to validate the company exists here
+            // entity.setCompany(...)
+        }
         return repository.save(entity).getId();
     }
     
