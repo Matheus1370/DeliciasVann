@@ -18,26 +18,26 @@ import com.deliciasvann.delicias_vann.modules.customer.CustomerRepository;
 import com.deliciasvann.delicias_vann.modules.customer.dto.AuthCustomerRequest;
 import com.deliciasvann.delicias_vann.modules.customer.dto.AuthCustomerResponse;
 
+import lombok.extern.java.Log;
 
 @Service
 public class AuthCustomerService {
-    
+
     @Value("${security.token.secret.customer}")
     private String secretKey;
 
     @Autowired
     private CustomerRepository repository;
 
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public AuthCustomerResponse execute(AuthCustomerRequest request) throws AuthenticationException{
+    public AuthCustomerResponse execute(AuthCustomerRequest request) throws AuthenticationException {
+
         var customer = this.repository.findByEmail(request.getEmail()).orElseThrow(
-            () -> {
-                throw new UserNotFoundException("Username/password incorret");
-            }
-        );
+                () -> {
+                    throw new UserNotFoundException("asdf");
+                });
 
         var passwordMatches = this.passwordEncoder.matches(request.getPassword(), customer.getPassword());
 
@@ -48,16 +48,16 @@ public class AuthCustomerService {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         var expiresIn = Instant.now().plus(Duration.ofHours(1));
         var token = JWT.create()
-            .withIssuer("delicias_vann")
-            .withSubject(customer.getId().toString())
-            .withExpiresAt(expiresIn)
-            .withClaim("roles", Arrays.asList("CUSTOMER"))
-            .sign(algorithm);
+                .withIssuer("delicias_vann")
+                .withSubject(customer.getId().toString())
+                .withExpiresAt(expiresIn)
+                .withClaim("roles", Arrays.asList("CUSTOMER"))
+                .sign(algorithm);
 
         var authCustomerResponse = AuthCustomerResponse.builder()
-            .access_token(token)
-            .expires_in(expiresIn.toEpochMilli())
-            .build();
+                .access_token(token)
+                .expires_in(expiresIn.toEpochMilli())
+                .build();
 
         return authCustomerResponse;
     }

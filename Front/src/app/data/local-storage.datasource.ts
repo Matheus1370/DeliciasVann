@@ -30,4 +30,39 @@ export class LocalStorageDataSource {
       return [];
     }
   }
+
+  static updateToken(token: string): void {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('userToken', token);
+    }
+  }
+
+  static getToken(): string | null {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('userToken');
+    } else {
+      return null;
+    }
+  }
+
+  static clearToken(): void {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('userToken');
+    }
+  }
+
+  static updateUserData(userData: any): void {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('userData', JSON.stringify(userData));
+    }
+  }
+
+  static getUserData(): any {
+    if (typeof window !== 'undefined') {
+      const userData = localStorage.getItem('userData');
+      return userData ? JSON.parse(userData) : null;
+    } else {
+      return null;
+    }
+  }
 }

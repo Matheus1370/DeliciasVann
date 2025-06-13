@@ -9,7 +9,7 @@
       <button class="button-wrapper" (click)="this.openCartModal()">
         <img class="link" [src]="bagIconSrc" />
       </button>
-      <a href="login">
+      <a [href]="isLoggedIn ? '/profile' : '/login'">
         <img class="link" [src]="profileIconSrc" />
       </a>
     </div>
